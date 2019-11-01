@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-6">
         <!-- {{csrf_field()}} -->
-            <form class="" method="POST" action="{{url('/insert')}}">
+            <form class="" method="POST" action="{{url('/edit',array($articles->id))}}">
             {{csrf_field()}}
             <!-- @method('GET') -->
                 <fieldset>
@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Title</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="exampleInputEmail1" name="title" aria-describedby="emailHelp" placeholder="Enter Title">
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="title" value="<?php echo $articles->title; ?>" placeholder="Enter Title">
                         </div>
                         <div class="col-lg-10">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -35,11 +35,13 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Description</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="description" placeholder="Description">
+                            <textarea type="text" class="form-control" id="exampleInputPassword1" name="description" placeholder="Description">
+                                <?php echo $articles->description?>
+                            </textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                         <a href="{{url('/')}}" class="btn btn-primary">Back</a>
                     </div>
                 </fieldset>
